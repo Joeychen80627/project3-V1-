@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+<body>
+  <header>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Index</a>
+    </ul>
+  </header>
+
+  <main>
+    <form name="google-sheet">
+      <label>DateThe date of the camping attended</label><br>
+      <input style="font-size: 150%;" type="text" class="datepicker" id="datepicker" >
+    
+      <br><br><br>
+      
+      <label>Name</label><br>
+      <input type="text" id="name" name="姓名" inputmode="email" style="font-size: 150%;"  placeholder="real name"><br>
+      <label>Email</label><br>
+      <input type="text" id="email" name="email" inputmode="email" style="font-size: 150%;" placeholder="example@gmail.com"><br>
+
+
+      
+
+      <br><br><br>
+      <button type="submit" class="btn btn-primary" style=" margin-top: 30px; width: 100%; height: auto; font-size: 200%;" >Submit</button>
+      <h5>Please answer truthfully, or the discount coupon will not be sent. JAC Company reserves the right for the final decision.</h5>
+
+    </form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwZbYKc3P83C2HULO_CqvN5iqE1XrbFBaNYtTU63QURwoY43g5FsSnTaAEELJ4-u7r2/exec'
+  const form = document.forms['google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then( response => alert('Successful!'))
+      .catch(error => alert('Unsuccessful!'))
+  })
+  
+</script>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
