@@ -55,11 +55,22 @@
         const form = document.forms['google-sheet']
 
         form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then( response => alert('next page',location.href="orderinfo.html"))
-            .catch(error => alert('Rating Unsuccessful!'))
-        })
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        if (response.ok) {
+            // 如果請求成功，導航到下一頁
+            window.location.href = "orderinfo.html";
+        } else {
+            // 如果請求失敗，顯示錯誤消息
+            alert('Failed! Please try again!');
+        }
+    })
+    .catch(error => {
+        // 捕獲任何錯誤，並顯示錯誤消息
+        alert('An error occurred: ' + error);
+    });
+})
   
 </script>
 
